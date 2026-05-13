@@ -1,0 +1,862 @@
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+/* === VARIABLES CSS PARA COLORES === */
+:root {
+    --bg-color: #08203A;
+    --text-color: #8EE3F1;
+    --accent-color: #6BC5D8;
+    --border-color: #8EE3F1;
+    --panel-bg: rgba(5, 25, 45, 0.7);
+    --glow-color: #8EE3F1;
+}
+
+body {
+    font-family: 'Share Tech Mono', monospace;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    cursor: url("http://angveloso.laboratoriodiseno.cl/BPL/wp-content/uploads/2025/10/cursor.png"), auto;
+    user-select: none;
+}
+
+/* === Efecto CRT === */
+.crt-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100003;
+}
+
+.crt-effect::before {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
+        linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+    background-size: 100% 4px, 6px 100%;
+    animation: scanlines 0.15s linear infinite;
+}
+
+.crt-effect::after {
+    content: " ";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background: var(--bg-color);
+    opacity: 0;
+    animation: flicker 0.15s infinite;
+}
+
+@keyframes scanlines {
+    from {
+        background-position: 0 0, 0 0;
+    }
+
+    to {
+        background-position: 0 100%, 0 0;
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.1;
+    }
+
+    5% {
+        opacity: 0.2;
+    }
+
+    10% {
+        opacity: 0.1;
+    }
+
+    15% {
+        opacity: 0.3;
+    }
+
+    20% {
+        opacity: 0.1;
+    }
+
+    25% {
+        opacity: 0.2;
+    }
+
+    30% {
+        opacity: 0.1;
+    }
+
+    35% {
+        opacity: 0.2;
+    }
+
+    40% {
+        opacity: 0.1;
+    }
+
+    45% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.1;
+    }
+
+    55% {
+        opacity: 0.2;
+    }
+
+    60% {
+        opacity: 0.1;
+    }
+
+    65% {
+        opacity: 0.2;
+    }
+
+    70% {
+        opacity: 0.1;
+    }
+
+    75% {
+        opacity: 0.2;
+    }
+
+    80% {
+        opacity: 0.1;
+    }
+
+    85% {
+        opacity: 0.2;
+    }
+
+    90% {
+        opacity: 0.1;
+    }
+
+    95% {
+        opacity: 0.2;
+    }
+
+    100% {
+        opacity: 0.1;
+    }
+}
+
+/* Efecto de distorsión sutil en el texto */
+.crt-text {
+    animation: textShadow 1.6s infinite;
+}
+
+@keyframes textShadow {
+    0% {
+        text-shadow: 0.2px 0 1px rgba(0, 30, 255, 0.3), -0.2px 0 1px rgba(255, 0, 80, 0.2), 0 0 3px;
+    }
+
+    25% {
+        text-shadow: 0.5px 0 1px rgba(0, 30, 255, 0.3), -0.5px 0 1px rgba(255, 0, 80, 0.2), 0 0 3px;
+    }
+
+    50% {
+        text-shadow: 0.3px 0 1px rgba(0, 30, 255, 0.3), -0.3px 0 1px rgba(255, 0, 80, 0.2), 0 0 3px;
+    }
+
+    75% {
+        text-shadow: 0.6px 0 1px rgba(0, 30, 255, 0.3), -0.6px 0 1px rgba(255, 0, 80, 0.2), 0 0 3px;
+    }
+
+    100% {
+        text-shadow: 0.2px 0 1px rgba(0, 30, 255, 0.3), -0.2px 0 1px rgba(255, 0, 80, 0.2), 0 0 3px;
+    }
+}
+
+/* === Efectos Glitch Severance - Velocidad Variable === */
+.glitch-active-body {
+    animation: body-blink-variable 1.8s ease-in-out !important;
+}
+
+@keyframes body-blink-variable {
+
+    /* Primer segundo: parpadeos lentos */
+    0% {
+        filter: brightness(100%);
+    }
+
+    5% {
+        filter: brightness(0%);
+    }
+
+    10% {
+        filter: brightness(100%);
+    }
+
+    15% {
+        filter: brightness(0%);
+    }
+
+    20% {
+        filter: brightness(100%);
+    }
+
+    /* Transición a parpadeos rápidos */
+    25% {
+        filter: brightness(0%);
+    }
+
+    30% {
+        filter: brightness(100%);
+    }
+
+    35% {
+        filter: brightness(0%);
+    }
+
+    40% {
+        filter: brightness(100%);
+    }
+
+    45% {
+        filter: brightness(0%);
+    }
+
+    50% {
+        filter: brightness(100%);
+    }
+
+    /* Último segundo: parpadeos muy rápidos */
+    55%,
+    60%,
+    65%,
+    70%,
+    75%,
+    80%,
+    85%,
+    90%,
+    95%,
+    100% {
+        filter: brightness(0%);
+    }
+
+    52%,
+    57%,
+    62%,
+    67%,
+    72%,
+    77%,
+    82%,
+    87%,
+    92%,
+    97% {
+        filter: brightness(100%);
+    }
+}
+
+/* === Boot Log === */
+.boot-log {
+    position: fixed;
+    inset: 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    padding: 20px;
+    font-size: 14px;
+    white-space: pre-line;
+    overflow-y: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    opacity: 1;
+    animation: boot-fade-out 0.1s ease-in forwards;
+    animation-delay: 3.8s;
+    z-index: 100000;
+    text-shadow: 0 0 3px var(--glow-color);
+}
+
+@keyframes boot-fade-out {
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+.boot-line {
+    opacity: 0;
+    animation: show-line 0.1s ease-in forwards;
+}
+
+@keyframes show-line {
+    to {
+        opacity: 1;
+    }
+}
+
+/* === Logo === */
+.intro {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    animation: fade-in 0.6s ease-in forwards;
+    animation-delay: 4s;
+}
+
+.logo {
+    position: relative;
+    animation: fade-out 1s ease-in forwards;
+    animation-delay: 7s;
+    filter: brightness(1.1) contrast(1.1);
+}
+
+.logo::after {
+    content: '';
+    position: absolute;
+    left: 21px;
+    bottom: 21px;
+    width: 0;
+    height: 2px;
+    background-color: var(--text-color);
+    animation: grow 0.8s ease-in forwards;
+    animation-delay: 5.3s;
+    box-shadow: 0 0 3px var(--glow-color);
+}
+
+.logo::before {
+    content: '';
+    position: absolute;
+    left: 21px;
+    top: 21px;
+    width: 0;
+    margin-left: 80%;
+    height: 2px;
+    background-color: var(--text-color);
+    animation: grow 0.8s ease-in forwards;
+    animation-delay: 4.8s;
+    box-shadow: 0 0 3px var(--glow-color);
+}
+
+.logo-text {
+    position: absolute;
+    top: 30px;
+    left: 39px;
+    font-family: 'Russo One', sans-serif;
+    font-size: 28px;
+    letter-spacing: 12px;
+    z-index: 99999;
+    opacity: 0;
+    animation: fade-in 1s ease-in forwards;
+    animation-delay: 5.5s;
+    text-shadow: 0 0 3px var(--glow-color);
+}
+
+.logo-bg {
+    position: absolute;
+    width: 0;
+    top: 33px;
+    left: 20px;
+    height: 40px;
+    background-color: transparent;
+    animation: grow 0.6s linear forwards;
+    animation-delay: 4.8s;
+}
+
+.logo-circles {
+    display: block;
+    width: 200px;
+    height: 100px;
+    border: 2px solid var(--text-color);
+    border-radius: 100%;
+    position: relative;
+    box-shadow: 0 0 3px var(--glow-color);
+}
+
+.logo-circles::before,
+.logo-circles::after {
+    content: '';
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    border: 2px solid var(--text-color);
+    border-radius: 100%;
+    opacity: 0;
+    box-shadow: 0 0 3px var(--glow-color);
+}
+
+.logo-circles::before {
+    animation: scale72 1s linear forwards;
+    animation-delay: 5s;
+}
+
+.logo-circles::after {
+    animation: scale33 1s linear forwards;
+    animation-delay: 5.8s;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        display: none;
+    }
+}
+
+@keyframes grow {
+    from {
+        width: 0;
+        margin-left: 80%;
+    }
+
+    to {
+        width: 80%;
+        margin-left: 0;
+    }
+}
+
+@keyframes scale33 {
+    0% {
+        opacity: 1;
+        width: 0;
+        left: 50%;
+    }
+
+    100% {
+        width: 33%;
+        left: 33%;
+        opacity: 1;
+    }
+}
+
+@keyframes scale72 {
+    0% {
+        opacity: 1;
+        width: 0;
+        left: 50%;
+    }
+
+    100% {
+        width: 72%;
+        left: 14%;
+        opacity: 1;
+    }
+}
+
+/* === Blinker === */
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.blinker {
+    animation: blink 1s step-start infinite;
+}
+
+/* === Command Notes === */
+#commandNotes {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: auto;
+    height: 95vh;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0px 14px;
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 15px;
+    line-height: 1.3;
+    z-index: 9999;
+    text-shadow: 0 0 3px var(--glow-color);
+    filter: brightness(1.1) contrast(1.1);
+    opacity: 0;
+    pointer-events: none;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+}
+
+#commandNotes .list-comand {
+    list-style: none;
+    padding: 0;
+}
+
+#commandNotes.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scaleY(1);
+}
+
+#commandNotes h3 {
+    font-family: 'Russo One', sans-serif;
+    font-size: 16px;
+    letter-spacing: 2px;
+    margin: 14px 0 6px 0;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 4px;
+    text-align: center;
+}
+
+/* === Terminal Header Integrado === */
+.terminal-header {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--text-color);
+    text-shadow: 0 0 3px var(--glow-color);
+}
+
+.terminal-header .title {
+    font-family: 'Russo One', sans-serif;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.terminal-header .subtitle {
+    font-size: 14px;
+    color: var(--accent-color);
+}
+
+/* === Terminal === */
+#terminal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 16px;
+    white-space: pre-line;
+    overflow-y: auto;
+    text-shadow: 0 0 3px var(--glow-color);
+    z-index: 1;
+    filter: brightness(1.1) contrast(1.1);
+    padding: 0;
+}
+
+.terminal-content {
+    padding: 20px;
+}
+
+.line {
+    display: block;
+    min-height: 1.2em;
+    line-height: 1.2;
+    margin: 2px 0;
+}
+
+.prompt {
+    display: inline-block;
+    width: 60px;
+    vertical-align: top;
+}
+
+.input-span,
+.blinker,
+.cmd {
+    display: inline;
+    vertical-align: top;
+    line-height: inherit;
+}
+
+/* === System Glow for Clear === */
+.reboot-glow {
+    animation: glow-flash 0.5s ease-in-out;
+}
+
+@keyframes glow-flash {
+    0% {
+        background-color: var(--text-color);
+        color: var(--bg-color);
+    }
+
+    100% {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+    }
+}
+
+/* === File Manager === */
+#containFiles {
+    position: fixed;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 0px 4px 4px 4px;
+    top: 45px;
+    right: 11rem;
+    width: 50%;
+    height: calc(95vh - 25px);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(142, 227, 241, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transform: scaleY(0);
+    transform-origin: center;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-out;
+    z-index: 10;
+}
+
+#containFiles.visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scaleY(1);
+}
+
+/* Pestaña de la carpeta */
+#containFiles::before {
+      content: attr(data-categories);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    letter-spacing: 1rem;
+    position: fixed;
+    top: -27px;
+    left: -1px;
+    width: 200px;
+    height: 25px;
+    background-color: var(--panel-bg);
+    border: 1px solid var(--border-color);
+    border-bottom: none;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 0 5px rgba(142, 227, 241, 0.15);
+    z-index: 10;
+}
+
+/* === FILES === */
+.boxFiles {
+    padding: 2rem;
+}
+
+.file-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    color: var(--text-color);
+}
+
+.file-item:hover {
+    background-color: rgba(142, 227, 241, 0.1);
+}
+
+.file-item .icon {
+    width: 60px;
+    height: 75px;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.file-item .name {
+    font-size: 13px;
+    text-align: center;
+    word-break: break-all;
+}
+
+.file .icon {
+    background-color: #05214B;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+    clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 18px, 100% 100%, 0 100%);
+}
+
+.file .icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 18px 18px 0;
+    border-color: var(--border-color);
+}
+
+.file-item:hover .file .icon {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+/* === Carga de Comandos === */
+.loader-commands {
+    width: 100%;
+    height: 160px;
+    margin: 30px auto;
+    position: relative;
+    perspective: 800px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+}
+
+.digit {
+    color: var(--text-color);
+    font-family: monospace;
+    font-size: 18px;
+    text-align: center;
+    text-shadow: 0 0 5px var(--text-color);
+    animation:
+        matrix-fall 2s infinite,
+        matrix-flicker 0.5s infinite;
+    opacity: 0;
+}
+
+.digit:nth-child(1) {
+    animation-delay: 0.1s;
+}
+
+.digit:nth-child(2) {
+    animation-delay: 0.3s;
+}
+
+.digit:nth-child(3) {
+    animation-delay: 0.5s;
+}
+
+.digit:nth-child(4) {
+    animation-delay: 0.7s;
+}
+
+.digit:nth-child(5) {
+    animation-delay: 0.9s;
+}
+
+.digit:nth-child(6) {
+    animation-delay: 1.1s;
+}
+
+.digit:nth-child(7) {
+    animation-delay: 1.3s;
+}
+
+.digit:nth-child(8) {
+    animation-delay: 1.5s;
+}
+
+.glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle,
+        var(--bg-color) 0%,
+            transparent 70%);
+    animation: matrix-pulse 2s infinite;
+}
+
+@keyframes matrix-fall {
+    0% {
+        transform: translateY(-50px) rotateX(90deg);
+        opacity: 0;
+    }
+
+    20%,
+    80% {
+        transform: translateY(0) rotateX(0deg);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(50px) rotateX(-90deg);
+        opacity: 0;
+    }
+}
+
+@keyframes matrix-flicker {
+
+    0%,
+    19%,
+    21%,
+    100% {
+        opacity: 0.8;
+    }
+
+    20% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes matrix-pulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+#mobile{
+    display: none;
+}
+@media (max-width: 1200px){
+    #mobile{
+        height: 100vh;
+        width: 100%;
+        background-color: var(--bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 9999999;
+
+        p{
+            text-shadow: 0 0 3px var(--glow-color);
+            font-size: 1rem;
+            color: var(--text-color);
+        }
+    }
+}

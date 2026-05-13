@@ -1,0 +1,441 @@
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    pointer-events: auto;
+    /* asegurarte de que reciba clicks */
+}
+
+
+.modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#containFiles .file-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text-color);
+    z-index: 11;
+}
+
+#containFiles .file-close:hover {
+    color: var(--accent-color);
+}
+
+
+/* === MODAL 2 === */
+body.modal-open {
+    overflow: hidden;
+}
+
+/* === Base de todos los modales === */
+.modal-archivo {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    font-family: 'Share Tech Mono', monospace;
+}
+
+/* === Contenedor interior del modal === */
+.modal-content {
+    background-color: #08203A;
+    border: 2px solid #8EE3F1;
+    border-radius: 12px;
+    margin: 10% auto;
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    color: #8EE3F1;
+    box-shadow: 0 0 6px #8EE3F1;
+    position: relative;
+    max-height: 70vh;
+    /* Limita la altura de la modal */
+    overflow-y: auto;
+    /* Aparece scroll solo si el contenido es más grande */
+
+}
+
+.modal-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background-color: #38e4ff;
+    border-radius: 4px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background-color: rgba(142, 227, 241, 0.05);
+}
+
+/* === Botón cerrar === */
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #8EE3F1;
+    text-shadow: 0 0 6px #8EE3F1;
+    transition: 0.2s;
+}
+
+.modal-close:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #8EE3F1, 0 0 20px #8EE3F1;
+}
+
+/* === Efecto CRT flicker === */
+@keyframes crt-flicker {
+    0% {
+        opacity: 0.98;
+        text-shadow: 0 0 3px #8EE3F1;
+    }
+
+    100% {
+        opacity: 1;
+        text-shadow: 0 0 6px #8EE3F1;
+    }
+}
+
+/* === Modal de lista (el primero) === */
+.modal-lista {
+    box-shadow: 0 0 15px #8EE3F1 inset;
+}
+
+¿
+
+/* === Estilo del contenido del detalle === */
+.modal-detalle {
+    box-shadow: 0 0 20px #8EE3F1, 0 0 30px rgba(142, 227, 241, 0.4);
+}
+
+#entradas-lista li {
+    color: #8EE3F1;
+    margin-bottom: 6px;
+    transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+
+
+#entradas-lista li:hover {
+    transform: scale(1.03);
+    text-shadow: 0 0 3px #8EE3F1, 0 0 12px rgba(142, 227, 241, 0.8);
+}
+
+
+.modal-superpuesto {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    /* encima de la lista */
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    animation: glitchIn 0.5s ease forwards;
+}
+
+
+@keyframes glitchIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+        filter: drop-shadow(2px 0 #38e4ff) drop-shadow(-2px 0 #8EE3F1);
+    }
+
+    25% {
+        transform: translateX(10px);
+    }
+
+    50% {
+        transform: translateX(-5px);
+    }
+
+    75% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+        filter: none;
+    }
+}
+
+
+.modal-superpuesto .modal-content {
+    background-color: #08203A;
+    border: 2px solid #8EE3F1;
+    border-radius: 12px;
+    margin: 10% auto;
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    box-shadow: 0 0 15px #8EE3F1;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.modal-superpuesto .modal-content:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 0 25px #8EE3F1, 0 0 40px #38e4ff inset;
+}
+
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    overflow: hidden;
+}
+
+
+
+.modal-content {
+    background-color: #08203A;
+    border: 2px solid #8EE3F1;
+    border-radius: 12px;
+    margin: 10% auto;
+    padding: 20px;
+    max-width: 600px;
+    width: 90%;
+    position: relative;
+    color: #8EE3F1;
+    font-family: 'Share Tech Mono', monospace;
+    box-shadow: 0 0 12px #8EE3F1;
+}
+
+.modal-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    color: #8EE3F1;
+    text-shadow: 0 0 6px #8EE3F1;
+    transition: 0.2s;
+}
+
+.modal-close:hover {
+    color: #fff;
+    text-shadow: 0 0 10px #8EE3F1, 0 0 20px #8EE3F1;
+}
+
+.cube-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin: 3.125rem auto;
+}
+
+.container-cube {
+    width: 10rem;
+    height: 10rem;
+    position: relative;
+    perspective: 62.5rem;
+}
+
+.carusel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s;
+}
+
+
+.figure {
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    border: 1px solid #8EE3F1;
+    backface-visibility: hidden;
+    text-shadow: 0 0 3px #8EE3F1;
+    cursor: pointer;
+    box-shadow: 0 0 8px #8EE3F1;
+}
+
+.figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #8EE3F1;
+}
+
+/* === Botones === */
+.button {
+    width: 2.8125rem;
+    height: 2.8125rem;
+    background-color: #111;
+    color: #8EE3F1;
+    font-size: 1.375rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 2.8125rem;
+    border-radius: 50%;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0 6px #8EE3F1;
+    transition: 0.2s;
+}
+
+.button:hover {
+    color: #fff;
+    box-shadow: 0 0 12px #8EE3F1, 0 0 24px #8EE3F1;
+}
+
+.cube-wrapper .up {
+    margin-bottom: 3rem;
+}
+
+.cube-wrapper .down {
+    margin-top: 3rem;
+}
+
+.figure.clickable {
+    cursor: pointer;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.cube-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin: 3.125rem auto;
+    perspective: 1000px;
+    position: relative;
+}
+
+/* ===== Contenedor del cubo ===== */
+.container-cube {
+    width: 10rem;
+    height: 10rem;
+    position: relative;
+    perspective: 1000px;
+    transition: transform 1s ease;
+}
+
+/* ===== Cubo en sí ===== */
+.carusel {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 1s ease;
+}
+
+
+.figure {
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    border: 1px solid #38e4ff;
+    backface-visibility: hidden;
+    box-shadow: 0 0 10px rgba(56, 228, 255, 0.3);
+    overflow: hidden;
+    transition: transform 0.6s ease, box-shadow 0.3s ease;
+}
+
+.figure img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.9) contrast(1.1);
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+
+.figure:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.1) contrast(1.2);
+}
+
+.figure:hover {
+    box-shadow: 0 0 20px #38e4ff, inset 0 0 10px #38e4ff;
+}
+
+
+/*.container-cube:hover {
+    transform: rotateY(10deg) rotateX(5deg);
+}*/
+
+.button {
+    width: 2.8125rem;
+    height: 2.8125rem;
+    background-color: #0c0c0c;
+    color: #38e4ff;
+    font-size: 1.375rem;
+    font-weight: bold;
+    text-align: center;
+    line-height: 2.8125rem;
+    border-radius: 50%;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(56, 228, 255, 0.3);
+    border: 2px solid #38e4ff;
+    transition: all 0.25s ease;
+}
+
+.button:hover {
+    background-color: #38e4ff;
+    color: #000;
+    box-shadow: 0 0 15px #38e4ff, 0 0 30px #38e4ff;
+    transform: scale(1.1);
+}
+
+.button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px #38e4ff inset;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+
+.figure.clickable {
+    cursor: pointer;
+}
